@@ -1,6 +1,6 @@
 # AWS Cross-Region Backup Solution
 
-This Terraform configuration sets up automated cross-region backups for EC2 instances and RDS databases using AWS Backup service.
+This Terraform configuration sets up automated cross-region backups for EC2 instances and RDS databases using AWS Backup service with SNS notifications.
 
 ## Prerequisites
 
@@ -18,6 +18,12 @@ This Terraform configuration sets up automated cross-region backups for EC2 inst
 ### Schedule and Retention
 - Backup Time: 12:00 PM IST (Daily)
 - Retention Period: 365 days
+
+## Notifications
+
+Backup status notifications are configured via SNS for the following events:
+- Backup job started/completed/failed
+- Copy job started/completed/failed
 
 ## Resource Selection
 
@@ -37,7 +43,7 @@ Value: yes
 └── modules/
     ├── backup/            # Main backup module
     ├── backup_plan/       # Backup plan configuration
-    └── backup_vault/      # Backup vault configuration
+    └── backup_vault/      # Backup vault and notifications
 ```
 
 ## Usage
@@ -57,9 +63,12 @@ terraform init
 terraform apply
 ```
 
+4. Subscribe to the SNS topic for notifications
+
 ## Monitoring
 
 Monitor backup jobs through:
+- SNS notifications
 - AWS Backup dashboard
 - AWS CloudWatch
 - AWS Backup audit manager
@@ -69,3 +78,4 @@ Monitor backup jobs through:
 - Cross-account backups for isolation
 - Cross-region copies for disaster recovery
 - Tag-based selection for controlled backups
+- SNS notifications for backup status monitoring

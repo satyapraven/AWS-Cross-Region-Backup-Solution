@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"backup","Source":"./modules/backup","Dir":"modules/backup"},{"Key":"backup.backup_plan_ap_south_1","Source":"../backup_plan","Dir":"modules/backup_plan"},{"Key":"backup.backup_vault","Source":"../backup_vault","Dir":"modules/backup_vault"}]}
